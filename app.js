@@ -27,6 +27,20 @@ $(document).ready(() => {
             $('#cards').append(card);
           });
         });
+ 
+         // Controlador de eventos para el botón de eliminar
+    $('.delete-product').on('click', function() {
+        let id = $(this).data('id');
+        $.ajax({
+          type: 'DELETE',
+          url: 'https://644fc2dcba9f39c6ab6ba850.mockapi.io/api/ecommerce/product/' + id,
+          success: function() {
+            // Eliminar la tarjeta correspondiente
+            $(this).closest('.row').remove();
+          }.bind(this)
+        });
+      });
+  
         $('#add-product-btn').on('click', function() {
             $('#add-product-modal').modal('show');
           });
